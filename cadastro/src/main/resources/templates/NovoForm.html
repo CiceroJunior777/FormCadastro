@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xthml">
+
+<head>
+  <!--links e configurações padrões-->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+  <!--Cabeçalho da página-->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">Formulário de Cadastro</a>
+    </div>
+  </nav>
+
+  <!--Parte Principal da Página. Que Vai Armazenar os Dados do Usuário-->
+  <h1 class="text-center">
+    Formulário de Cadastro</h1>
+
+  <div class="card">
+    <div class="card-header">
+      <form class="row g-3">
+        <div class="col-6">
+          <label for="inputNome" class="form-label" required>Nome*</label>
+          <input type="text" class="form-control" id="inputNome" required>
+        </div>
+        <div class="col-6">
+          <label for="inputSobrenome" class="form-label">Sobrenome*</label>
+          <input type="text" class="form-control" id="inputSobrenome" required>
+        </div>
+        <div class="col-6">
+          <label for="inputEmail" class="form-label">E-mail*</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="escreva aqui sua mensagem" required>
+        </div>
+        <div class="col-6">
+          <label for="inputState" class="form-label">Por Favor Especifique Sua Necessidade</label>
+          <select id="inputState" class="form-select">
+            <option selected>Selecione um Problema</option>
+            <option>Lentidão no Sistema</option>
+            <option>Solicitar Mudança de E-mail</option>
+            <option>outro Problema</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label for="inputZip" class="form-label">Mensagem*</label>
+          <textarea class="form-control" aria-label="With textarea" placeholder="escreva aqui sua mensagem"></textarea>
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" onclick="enviar()" type="submit">Enviar Mensagem</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--Fim da página Que Vai Conter o Rodapé Com os Dados de Contato Com o Fornecedor do Formulário de Cadastro-->
+
+  <!--Funcao do js para o formulario-->
+  <script>
+
+    function enviar() {
+
+      var nome = document.getElementById("inputNome").value;
+      var sobrenome = document.getElementById("inputSobrenome").value;
+      var email = document.getElementById("inputEmail").value;
+
+      if (nome == 0) {
+        alert("Erro. O campo Nome Não Pode Ficar em Branco!");
+      } else if (sobrenome == 0) {
+        alert("Erro. O campo Sobrenome Não Pode Ficar em Branco!");
+      } else if (email == 0) {
+        alert("Erro. O campo E-mail Não Pode Ficar em Branco!");
+      } else {
+        alert("Mensagem Enviada Com Sucesso " + nome + " " + sobrenome);
+      }
+    }
+  </script>
+
+  <!--Link do Java Script Que Será Responsável Pelas Funções de Lógica do Sistema Futuramente-->
+  <script src="/js/bootstrap.min.js"></script>
+
+  <!--servico de envio de emails-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("NHpf2E7kl1FWxDz_5");
+    })();
+  </script>
+
+</body>
+
+</html>
